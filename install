@@ -1,0 +1,23 @@
+#!/bin/bash -e
+DIR="$(dirname "$(realpath "$0")")"
+cd "$DIR"
+
+section () {
+	echo -e "\e[33m*** $1 ***\e[0m"
+}
+say () {
+	echo -e "\e[34m$1\e[0m"
+}
+
+
+section vim
+say "rm ~/.vim"
+rm -rf ~/.vim
+cp -v vimrc ~/.vimrc
+cp -rv vim ~/.vim
+say "PlugInstall"
+vim '+PlugInstall --sync' +qa
+
+section zsh
+rm -fv ~/.zshrc
+cp -v zshrc ~/.zshrc
