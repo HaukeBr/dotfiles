@@ -1,0 +1,90 @@
+#! vim
+
+call plug#begin()
+Plug 'morhetz/gruvbox'
+"Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'ciaranm/securemodelines'
+
+"Plug 'chtenb/helix.vim'
+
+Plug 'airblade/vim-gitgutter'
+
+"Plug 'valloric/youcompleteme'
+"""Plug 'scrooloose/syntastic'
+"""Plug 'sickill/vim-pasta'
+
+"""Plug 'stephpy/vim-yaml'
+"Plug 'avakhov/vim-yaml'
+"Plug 'egberts/vim-syntax-nftables'
+"""Plug 'chase/vim-ansible-yaml'
+"""Plug 'vim-scripts/bash-support.vim'
+
+" one of
+Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'yggdroot/indentline'
+Plug 'ntpeters/vim-better-whitespace'
+
+"Plug 'lokaltog/vim-powerline'
+"Plug 'scrooloose/nerdtree'
+"Plug 'xuyuanp/nerdtree-git-plugin'
+"Plug 'mbbill/undotree'
+
+
+Plug 'yggdroot/indentline'
+"Plug 'egberts/vim-syntax-nftables'
+
+"Plug 'neovimhaskell/haskell-vim'
+"Plug 'nfnty/vim-nftables' "disabled, was not used
+Plug 'morhetz/gruvbox'
+"Plug 'Vimjas/vint'
+"Plug 'vmchale/ghci-syntax'
+"Plug 'fladson/vim-kitty', { 'tag': '*' }
+
+"Plug 'powerline/powerline'
+
+"Erlaubt es, einfach externe Commands reinzuhooken
+"Use Cases:
+"1. Änderungsverlauf sichern
+"  -> automatisch commiten
+"  -> ggf regelmäßig pushen (Sicherheit? Passwörter, ssh Keys) => Lieber bei
+"     jedem Merge vorher das Repo sichern, verschlüsseln und dann erst ablegen
+"  -> einen Branch je Tag, Woche, Monat, Quartal, Semester, Jahr
+"  -> automatisches Merging
+"  -> Auch Events speichern (Open, Close, auch ohne Schreiben)
+"  -> Im Mergezyklus Dateien manuell inspizieren und Changes abspeichern
+"     (eigener Branch)
+"  -> Manche Dirs vollständig überwachen => Erkennung von Verschobenen Dateien
+"  -> Duplikate reporten
+"2. Kritische Dateien vorher backupen und neuen State dann verifizieren
+"3. Bearbeitete Dateien automatisch vor versehentlichem Löschen schützen
+"4. mv verbieten wo es git mv braucht etc
+"5. ... da war noch was
+Plug 'ahw/vim-hooks'
+call plug#end()
+
+
+
+if has#colorscheme('gruvbox')
+  if (empty($TMUX) && has("termguicolors"))
+    set termguicolors
+  endif
+  autocmd vimenter * ++nested colorscheme gruvbox
+  set background=dark
+end
+
+"Add rulers
+set colorcolumn=81,101
+
+"Visualize Tabs
+set list
+set listchars=tab:T> "▶▂
+highlight SpecialKey ctermfg=red
+
+"Configure tabs
+set tabstop=3 shiftwidth=3
+set noexpandtab
+
+"Enable Syntax Highlighting
+syntax on
+

@@ -1,0 +1,69 @@
+- package:
+    name: fdfind
+    type: virtual
+
+- template:
+    params: [version]
+    package:
+      name: fdfind-github-$version
+      source:
+        - type: github
+          user: sharkfd
+
+    source:
+      type: github
+      user: sharkfd
+      tag: v$version
+      version: $version
+      assets:
+        - name: fd-v10.4.2-x86_64-unknown-linux-musl.tar.gz
+          strip: 1
+          files:
+            - name: fd
+              dest: bin
+
+
+
+#---
+#- name: fdfind
+#  depends: []
+#
+#- name: fdfind-system
+#  provides: fdfind
+#  type: system
+#  params:
+#    check: "which fdfind"
+#    version: "fdfind --version | head -n 1 | cut -d' ' -f2"
+#
+#- package: fdfind-github-10.4.2
+#  provides: fdfind
+#  version: 10.4.2
+#  type: github
+#  params:
+#    user: sharkfd
+#    repo: fd
+#    tag: v10.4.2
+#    assets:
+#      - name: fd-v10.4.2-x86_64-unknown-linux-musl.tar.gz
+#        strip: 1
+#        files:
+#          - name: fd
+#            as: null
+#            src: null
+#            dest: bin
+#
+#- template: fdfind-github-$version
+#  provides: fdfind
+#  version: $version
+#  type: github
+#  params:
+#    user: sharkfd
+#    repo: fd
+#    tag: v$version
+#    assets:
+#      - name: "fd-v${version}-x86_64-unknown-linux-musl.tar.gz"
+#        strip: 1
+#        files:
+#          - name: fd
+#            dest: bin
+
